@@ -60,19 +60,19 @@ gulp.task("clean-scripts", function() {
   return gulp.src("./js/dist/**/*", { read: false }).pipe(clean());
 });
 
-gulp.task("serve", gulp.series(gulp.parallel("sass", "babel"), "views", () => {
+gulp.task("serve", /*gulp.series(gulp.parallel("sass", "babel"), "views",*/ () => {
   browserSync.init({
     server: "./"
   });
 
-  gulp.watch("./scss/*.scss", gulp.series("sass"));
-  gulp.watch("./js/src/*.js", gulp.series("babel"));
-  gulp.watch("./views/**/*.*", gulp.series("views"));
+  // gulp.watch("./scss/*.scss", gulp.series("sass"));
+  // gulp.watch("./js/src/*.js", gulp.series("babel"));
+  // gulp.watch("./views/**/*.*", gulp.series("views"));
 
-  gulp.watch("./css/*.css").on("change", browserSync.reload);
-  gulp.watch("./js/dist/*.js").on("change", browserSync.reload);
-  gulp.watch("./*.html").on("change", browserSync.reload);
-}));
+  // gulp.watch("./css/*.css").on("change", browserSync.reload);
+  // gulp.watch("./js/dist/*.js").on("change", browserSync.reload);
+  // gulp.watch("./*.html").on("change", browserSync.reload);
+});
 
 // hack to create empty folder
 gulp.task('build-dir', function () {
@@ -85,7 +85,7 @@ gulp.task('clean', function () {
       .pipe(clean());
 });
 
-gulp.task("default", gulp.series(gulp.parallel("clean-css", "clean-scripts"), "serve"));
+gulp.task("default", gulp.series(/* gulp.parallel("clean-css", "clean-scripts"),*/ "serve"));
 
 gulp.task("build", gulp.series("build-dir", "clean", gulp.parallel("sass", "babel"), "views", () => {  
   return gulp.src(['./index.html', './css/style.css', './fonts/**/*', './images/**/*', './js/dist/main.js', './vendor/**/*'])
