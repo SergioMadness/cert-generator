@@ -1,0 +1,76 @@
+.cert-wokrspace {
+    overflow: auto;
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+    &__control {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        & h5 {
+            font-size: 17px;
+            margin: 0 10px 0 0;
+        }
+        & span {
+            margin-right: 7px;
+        }
+        & .btn {
+            margin-right: 10px;
+        }
+    }
+    &__content {
+        height: 793.7px; //210mm;
+        width: 1122.5px; // 297mm;
+        background-color: #b6e6e4;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        & .cert-name {
+            position: absolute;
+            color: #000;
+            &--bordered {
+                outline: 1px dashed #777;
+            }
+        }
+    }
+}
+
+.cert-controls {
+    &__header {
+        font-size: 1.25rem;
+        padding: 20px 0;
+    }
+    & .form-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px dashed #eee;
+        & label {
+            margin: 0 1rem 0 0;
+        }
+        & input {
+            width: 100px;
+            &[type="checkbox"] {
+                width: auto;
+            }
+        }
+        & select {
+            width: 200px;
+        }
+    }
+    & .custom-file-control::before {
+        content: "Выбрать" !important;
+    }
+    & .custom-file-control::after {
+        content: "Выбрать файл..." !important;
+    }
+    & input[type="color"] {
+        -webkit-appearance: none;
+        height: 50px;
+    }
+}
