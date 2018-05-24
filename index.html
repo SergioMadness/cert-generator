@@ -557,7 +557,12 @@
 											</div>
 										</div>
 										<div class="cert-wokrspace__content">
-											<div class="cert-name cert-name--bordered"></div>
+											<div class="cert-name cert-bordered"></div>
+											<div class="cert-number cert-bordered"></div>
+											<div class="cert-course cert-bordered"></div>
+											<div class="cert-date cert-bordered"></div>
+											<div class="cert-date cert-bordered"></div>
+											<div class="cert-duration cert-bordered"></div>
 										</div>
 									</div>
 								</div>
@@ -616,11 +621,10 @@
 														<div class="form-group">
 															<label for="name-select-font-family">Выбрать шрифт</label>
 															<select class="form-control" id="name-select-font-family">
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
+																<option>Open Sans</option>
+																<option>Roboto</option>
+																<option>Montserrat</option>
+																<option>Lora</option>
 															</select>
 														</div>
 														<div class="form-group">
@@ -644,6 +648,15 @@
 																<option>Жирный + курсив</option>
 															</select>
 														</div>
+														<div class="form-group">
+															<label for="name-number-text-align">Выравнивание</label>
+															<select class="form-control" id="name-select-text-align">
+																<option>По левому краю</option>
+																<option>По правому краю</option>
+																<option>По центру</option>
+																<option>По ширине</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -657,12 +670,62 @@
 												</div>
 												<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordionIcons">
 													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-														non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-														sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-														helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-														lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-														of them accusamus labore sustainable VHS.
+														<div class="form-group">
+															<label class="form-check-label">
+																<input class="form-check-input" type="checkbox" id="number-number-border"> Скрыть рамку блока
+															</label>
+														</div>
+														<div class="form-group">
+															<label for="number-number-top">Расстояние от верхнего края</label>
+															<input type="number" class="form-control" id="number-number-top" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="number-number-left">Расстояние от левого края</label>
+															<input type="number" class="form-control" id="number-number-left" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="number-number-width">Максимальная ширина блока</label>
+															<input type="number" class="form-control" id="number-number-width" value="" min="0">
+														</div>
+														<div class="form-group">
+															<label for="number-select-font-family">Выбрать шрифт</label>
+															<select class="form-control" id="number-select-font-family">
+																<option>Open Sans</option>
+																<option>Roboto</option>
+																<option>Montserrat</option>
+																<option>Lora</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="number-number-font-size">Размер шрифта</label>
+															<input type="number" class="form-control" id="number-number-font-size" value="16" min="0">
+														</div>
+														<div class="form-group">
+															<label for="number-number-line-height">Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control" id="number-number-line-height" value="1.25" min="0" step="0.01">
+														</div>
+														<div class="form-group">
+															<label for="number-number-color">Цвет шрифта</label>
+															<input type="color" class="form-control" id="number-number-color" value="#000000">
+														</div>
+														<div class="form-group">
+															<label for="number-number-font-style">Стиль шрифта</label>
+															<select class="form-control" id="number-select-font-style">
+																<option>По умолчанию</option>
+																<option>Жирный</option>
+																<option>Курсив</option>
+																<option>Жирный + курсив</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="number-number-text-align">Выравнивание</label>
+															<select class="form-control" id="number-select-text-align">
+																<option>По левому краю</option>
+																<option>По правому краю</option>
+																<option>По центру</option>
+																<option>По ширине</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -676,12 +739,62 @@
 												</div>
 												<div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven" data-parent="#accordionIcons">
 													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-														non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-														sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-														helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-														lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-														of them accusamus labore sustainable VHS.
+														<div class="form-group">
+															<label class="form-check-label">
+																<input class="form-check-input" type="checkbox" id="course-number-border"> Скрыть рамку блока
+															</label>
+														</div>
+														<div class="form-group">
+															<label for="course-number-top">Расстояние от верхнего края</label>
+															<input type="number" class="form-control" id="course-number-top" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="course-number-left">Расстояние от левого края</label>
+															<input type="number" class="form-control" id="course-number-left" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="course-number-width">Максимальная ширина блока</label>
+															<input type="number" class="form-control" id="course-number-width" value="" min="0">
+														</div>
+														<div class="form-group">
+															<label for="course-select-font-family">Выбрать шрифт</label>
+															<select class="form-control" id="course-select-font-family">
+																<option>Open Sans</option>
+																<option>Roboto</option>
+																<option>Montserrat</option>
+																<option>Lora</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="course-number-font-size">Размер шрифта</label>
+															<input type="number" class="form-control" id="course-number-font-size" value="16" min="0">
+														</div>
+														<div class="form-group">
+															<label for="course-number-line-height">Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control" id="course-number-line-height" value="1.25" min="0" step="0.01">
+														</div>
+														<div class="form-group">
+															<label for="course-number-color">Цвет шрифта</label>
+															<input type="color" class="form-control" id="course-number-color" value="#000000">
+														</div>
+														<div class="form-group">
+															<label for="course-number-font-style">Стиль шрифта</label>
+															<select class="form-control" id="course-select-font-style">
+																<option>По умолчанию</option>
+																<option>Жирный</option>
+																<option>Курсив</option>
+																<option>Жирный + курсив</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="course-number-text-align">Выравнивание</label>
+															<select class="form-control" id="course-select-text-align">
+																<option>По левому краю</option>
+																<option>По правому краю</option>
+																<option>По центру</option>
+																<option>По ширине</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -695,12 +808,62 @@
 												</div>
 												<div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingEight" data-parent="#accordionIcons">
 													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-														non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-														sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-														helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-														lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-														of them accusamus labore sustainable VHS.
+														<div class="form-group">
+															<label class="form-check-label">
+																<input class="form-check-input" type="checkbox" id="date-number-border"> Скрыть рамку блока
+															</label>
+														</div>
+														<div class="form-group">
+															<label for="date-number-top">Расстояние от верхнего края</label>
+															<input type="number" class="form-control" id="date-number-top" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="date-number-left">Расстояние от левого края</label>
+															<input type="number" class="form-control" id="date-number-left" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="date-number-width">Максимальная ширина блока</label>
+															<input type="number" class="form-control" id="date-number-width" value="" min="0">
+														</div>
+														<div class="form-group">
+															<label for="date-select-font-family">Выбрать шрифт</label>
+															<select class="form-control" id="date-select-font-family">
+																<option>Open Sans</option>
+																<option>Roboto</option>
+																<option>Montserrat</option>
+																<option>Lora</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="date-number-font-size">Размер шрифта</label>
+															<input type="number" class="form-control" id="date-number-font-size" value="16" min="0">
+														</div>
+														<div class="form-group">
+															<label for="date-number-line-height">Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control" id="date-number-line-height" value="1.25" min="0" step="0.01">
+														</div>
+														<div class="form-group">
+															<label for="date-number-color">Цвет шрифта</label>
+															<input type="color" class="form-control" id="date-number-color" value="#000000">
+														</div>
+														<div class="form-group">
+															<label for="date-number-font-style">Стиль шрифта</label>
+															<select class="form-control" id="date-select-font-style">
+																<option>По умолчанию</option>
+																<option>Жирный</option>
+																<option>Курсив</option>
+																<option>Жирный + курсив</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="date-number-text-align">Выравнивание</label>
+															<select class="form-control" id="date-select-text-align">
+																<option>По левому краю</option>
+																<option>По правому краю</option>
+																<option>По центру</option>
+																<option>По ширине</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -714,12 +877,62 @@
 												</div>
 												<div id="collapseNine" class="collapse" role="tabpanel" aria-labelledby="headingNine" data-parent="#accordionIcons">
 													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-														non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-														sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-														helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-														lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-														of them accusamus labore sustainable VHS.
+														<div class="form-group">
+															<label class="form-check-label">
+																<input class="form-check-input" type="checkbox" id="duration-number-border"> Скрыть рамку блока
+															</label>
+														</div>
+														<div class="form-group">
+															<label for="duration-number-top">Расстояние от верхнего края</label>
+															<input type="number" class="form-control" id="duration-number-top" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="duration-number-left">Расстояние от левого края</label>
+															<input type="number" class="form-control" id="duration-number-left" value="0" min="0">
+														</div>
+														<div class="form-group">
+															<label for="duration-number-width">Максимальная ширина блока</label>
+															<input type="number" class="form-control" id="duration-number-width" value="" min="0">
+														</div>
+														<div class="form-group">
+															<label for="duration-select-font-family">Выбрать шрифт</label>
+															<select class="form-control" id="duration-select-font-family">
+																<option>Open Sans</option>
+																<option>Roboto</option>
+																<option>Montserrat</option>
+																<option>Lora</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="duration-number-font-size">Размер шрифта</label>
+															<input type="number" class="form-control" id="duration-number-font-size" value="16" min="0">
+														</div>
+														<div class="form-group">
+															<label for="duration-number-line-height">Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control" id="duration-number-line-height" value="1.25" min="0" step="0.01">
+														</div>
+														<div class="form-group">
+															<label for="duration-number-color">Цвет шрифта</label>
+															<input type="color" class="form-control" id="duration-number-color" value="#000000">
+														</div>
+														<div class="form-group">
+															<label for="duration-number-font-style">Стиль шрифта</label>
+															<select class="form-control" id="duration-select-font-style">
+																<option>По умолчанию</option>
+																<option>Жирный</option>
+																<option>Курсив</option>
+																<option>Жирный + курсив</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="duration-number-text-align">Выравнивание</label>
+															<select class="form-control" id="duration-select-text-align">
+																<option>По левому краю</option>
+																<option>По правому краю</option>
+																<option>По центру</option>
+																<option>По ширине</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -766,7 +979,7 @@
 
 		<!-- Common JS -->
 		<script src="js/common.js"></script>
-		<script src="js/cert.js"></script>
+		<script src="js/dist/cert.js"></script>
 
 </body>
 

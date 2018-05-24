@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Montserrat:400,400i,700,700i|Open+Sans:400,400i,700,700i|Roboto:400,400i,700,700i');
+.cert-font__roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.cert-font__opensans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cert-font__montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cert-font__lora {
+    font-family: 'Lora', serif;
+}
+
 .cert-wokrspace {
     overflow: auto;
     &__controls {
@@ -30,10 +47,14 @@
         background-position: center;
         background-size: cover;
         position: relative;
-        & .cert-name {
+        & .cert-name,
+        & .cert-number,
+        & .cert-course,
+        & .cert-date,
+        & .cert-duration {
             position: absolute;
             color: #000;
-            &--bordered {
+            &.cert-bordered {
                 outline: 1px dashed #777;
             }
         }
