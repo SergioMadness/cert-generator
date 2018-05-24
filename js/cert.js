@@ -151,7 +151,29 @@ $(document).ready(function () {
     setDragResize($('.cert-course'), $('#course-number-top'), $('#course-number-left'), $('#course-number-width'));
     setDragResize($('.cert-date'), $('#date-number-top'), $('#date-number-left'), $('#date-number-width'));
     setDragResize($('.cert-duration'), $('#duration-number-top'), $('#duration-number-left'), $('#duration-number-width'));
-
+    /*
+     * ACTIVE ELEMENT
+     */
+    (() => {
+        const elems = [$('.cert-name'), $('.cert-number'), $('.cert-course'), $('.cert-date'), $('.cert-duration')];
+        $.each(elems, function (key, elem) {
+            elem.click(function () {
+                $('.cert-controls .card-header a')[key + 1].click();
+            });
+        });
+        $.each($('.cert-controls .card-header a'), function (key, elem) {
+            elem.addEventListener('click', function () {
+                $.each(elems, function (key1, elem1) {
+                    elem1.removeClass('cert-active');
+                });
+                if (elem.getAttribute('aria-expanded') === 'false' && key >= 1) {
+                    if (elems[key - 1].hasClass('cert-bordered')) {
+                        elems[key - 1].toggleClass('cert-active');
+                    }
+                }
+            });
+        });
+    })();
 });
 
 // resize workspace
@@ -273,6 +295,7 @@ setTextAlign($('#duration-select-text-align'), $('.cert-duration'));
 function setBorder(switcher, element) {
     switcher.click(function (e) {
         element.toggleClass('cert-bordered');
+        element.toggleClass('cert-active');
     });
 };
 // top position
