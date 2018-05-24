@@ -54,6 +54,11 @@
         & .cert-duration {
             position: absolute;
             color: #000;
+            background: transparent;
+            cursor: move;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
             &.cert-bordered {
                 outline: 1px dashed #777;
             }

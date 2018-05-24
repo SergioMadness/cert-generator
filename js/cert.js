@@ -55,7 +55,6 @@ $(document).ready(function () {
         'top': `${params.name.positionTop}px`,
         'left': `${params.name.positionLeft}px`,
         'width': `${params.name.width}px`,
-        'max-width': `${params.name.width}px`,
         'font-size': `${params.name.fontSize}px`,
         'line-height': params.name.lineHeight,
         'font-family': 'Open Sans',
@@ -75,7 +74,6 @@ $(document).ready(function () {
         'top': `${params.number.positionTop}px`,
         'left': `${params.number.positionLeft}px`,
         'width': `${params.number.width}px`,
-        'max-width': `${params.number.width}px`,
         'font-size': `${params.number.fontSize}px`,
         'line-height': params.number.lineHeight,
         'font-family': 'Open Sans',
@@ -95,7 +93,6 @@ $(document).ready(function () {
         'top': `${params.course.positionTop}px`,
         'left': `${params.course.positionLeft}px`,
         'width': `${params.course.width}px`,
-        'max-width': `${params.course.width}px`,
         'font-size': `${params.course.fontSize}px`,
         'line-height': params.course.lineHeight,
         'font-family': 'Open Sans',
@@ -115,7 +112,6 @@ $(document).ready(function () {
         'top': `${params.date.positionTop}px`,
         'left': `${params.date.positionLeft}px`,
         'width': `${params.date.width}px`,
-        'max-width': `${params.date.width}px`,
         'font-size': `${params.date.fontSize}px`,
         'line-height': params.date.lineHeight,
         'font-family': 'Open Sans',
@@ -135,7 +131,6 @@ $(document).ready(function () {
         'top': `${params.duration.positionTop}px`,
         'left': `${params.duration.positionLeft}px`,
         'width': `${params.duration.width}px`,
-        'max-width': `${params.duration.width}px`,
         'font-size': `${params.duration.fontSize}px`,
         'line-height': params.duration.lineHeight,
         'font-family': 'Open Sans',
@@ -146,6 +141,17 @@ $(document).ready(function () {
     $('#duration-number-width').val(params.duration.width);
     $('#duration-number-font-size').val(params.duration.fontSize);
     $('#duration-number-line-height').val(params.duration.lineHeight);
+
+
+    /*
+     * DRAG & RESIZE ELEMENTS
+     */
+    setDragResize($('.cert-name'), $('#name-number-top'), $('#name-number-left'), $('#name-number-width'));
+    setDragResize($('.cert-number'), $('#number-number-top'), $('#number-number-left'), $('#number-number-width'));
+    setDragResize($('.cert-course'), $('#course-number-top'), $('#course-number-left'), $('#course-number-width'));
+    setDragResize($('.cert-date'), $('#date-number-top'), $('#date-number-left'), $('#date-number-width'));
+    setDragResize($('.cert-duration'), $('#duration-number-top'), $('#duration-number-left'), $('#duration-number-width'));
+
 });
 
 // resize workspace
@@ -286,7 +292,7 @@ function setWidth(switcher, element) {
     switcher.on('change paste keyup', function (e) {
         element.css({
             'width': e.target.value + 'px',
-            'max-width': e.target.value + 'px'
+            // 'max-width': e.target.value + 'px'
         });
     });
 };
@@ -365,5 +371,21 @@ function setTextAlign(switcher, element) {
                 break;
         }
         element.css('text-align', textAlign);
+    });
+};
+// drag and resize
+function setDragResize(element, switcherTop, switcherLeft, switcherWidth) {
+    element.draggable({
+        drag: function (event, ui) {
+            switcherTop.val(Math.ceil(ui.position.top));
+            switcherLeft.val(Math.ceil(ui.position.left));
+        }
+    });
+    element.resizable({
+        handles: 'e, w',
+        resize: function (event, ui) {
+            event.target.style.maxWidth = `${Math.ceil(ui.size.width)}px`;
+            switcherWidth.val(Math.ceil(ui.size.width));
+        }
     });
 };
