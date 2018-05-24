@@ -399,6 +399,7 @@ function setTextAlign(switcher, element) {
 // drag and resize
 function setDragResize(element, switcherTop, switcherLeft, switcherWidth) {
     element.draggable({
+        containment: 'parent',
         drag: function (event, ui) {
             switcherTop.val(Math.ceil(ui.position.top));
             switcherLeft.val(Math.ceil(ui.position.left));
@@ -406,6 +407,7 @@ function setDragResize(element, switcherTop, switcherLeft, switcherWidth) {
     });
     element.resizable({
         handles: 'e, w',
+        containment: 'parent',
         resize: function (event, ui) {
             event.target.style.maxWidth = `${Math.ceil(ui.size.width)}px`;
             switcherWidth.val(Math.ceil(ui.size.width));
