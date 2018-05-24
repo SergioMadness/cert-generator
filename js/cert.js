@@ -230,6 +230,21 @@ $('#file-0').on('change', function (e) {
         $('.cert-wokrspace__content').css('background-image', `url("${e.target.result}")`);
     });
 });
+$('#bg-number-size').on('change', function (e) {
+    let bgSize = 'cover';
+    switch (e.target.value) {
+        case 'Растянуть':
+            bgSize = 'cover';
+            break;
+        case 'По ширине':
+            bgSize = '100% auto';
+            break;
+        case 'По высоте':
+            bgSize = 'auto 100%';
+            break;
+    }
+    $('.cert-wokrspace__content').css('background-size', bgSize);
+});
 
 // TAB-2
 setBorder($('#name-number-border'), $('.cert-name'));
