@@ -226,7 +226,9 @@ const setSizes = (scale) => {
 // TAB-1
 // bg picker
 $('#file-0').on('change', function (e) {
-    $('.cert-wokrspace__content').css('background-image', `url("${e.target.value}")`);
+    readFile(this.files[0], function (e) {
+        $('.cert-wokrspace__content').css('background-image', `url("${e.target.result}")`);
+    });
 });
 
 // TAB-2
@@ -414,3 +416,9 @@ function setDragResize(element, switcherTop, switcherLeft, switcherWidth) {
         }
     });
 };
+// read file
+function readFile(file, onLoadCallback) {
+    var reader = new FileReader();
+    reader.onload = onLoadCallback;
+    reader.readAsDataURL(file);
+}
