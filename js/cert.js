@@ -42,7 +42,10 @@ const params = {
     },
 };
 
-let scale = 1;
+let scale = 1,
+    orientation = 'landscape',
+    bgImage = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAABAAEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKAP/2Q==';
+
 
 $(document).ready(function () {
     scale = ($('.cert-wokrspace__content').width() / $('.cert-wokrspace').width());
@@ -202,6 +205,7 @@ $('.cert-wokrspace__landscape').click(function () {
         'height': '793.7px',
         'width': '1122.5px'
     });
+    orientation = 'landscape';
 });
 
 // set portrait
@@ -210,6 +214,7 @@ $('.cert-wokrspace__portrait').click(function () {
         'height': '1122.5px',
         'width': '793.7px'
     });
+    orientation = 'portrait';
 });
 
 
@@ -227,7 +232,8 @@ const setSizes = (scale) => {
 // bg picker
 $('#file-0').on('change', function (e) {
     readFile(this.files[0], function (e) {
-        $('.cert-wokrspace__content').css('background-image', `url("${e.target.result}")`);
+        bgImage = e.target.result;
+        $('.cert-wokrspace__content').css('background-image', `url("${bgImage}")`);
     });
 });
 $('#bg-number-size').on('change', function (e) {
@@ -307,6 +313,14 @@ setFontStyle($('#duration-select-font-style'), $('.cert-duration'));
 setTextAlign($('#duration-select-text-align'), $('.cert-duration'));
 
 
+// Create PDF
+$('#preview').click(function () {
+    createPreviewPdf()
+});
+
+
+
+
 // FUNCTIONS
 // name border block
 function setBorder(switcher, element) {
@@ -332,7 +346,6 @@ function setWidth(switcher, element) {
     switcher.on('change paste keyup', function (e) {
         element.css({
             'width': e.target.value + 'px',
-            // 'max-width': e.target.value + 'px'
         });
     });
 };
@@ -436,4 +449,95 @@ function readFile(file, onLoadCallback) {
     var reader = new FileReader();
     reader.onload = onLoadCallback;
     reader.readAsDataURL(file);
+}
+// create pdf
+function createPreviewPdf() {
+    // page size A4: [595.28, 841.89],
+    // https://github.com/bpampuch/pdfmake/blob/7b5675d5b9d5d7b815bd721e00504b16560a6382/src/standardPageSizes.js
+    const w = $('.cert-wokrspace__content').width(),
+        h = $('.cert-wokrspace__content').height(),
+        paperW = (orientation == 'landscape') ? 841.89 : 595.28,
+        paperH = (orientation == 'landscape') ? 595.28 : 841.89;
+
+    function getX(elem) {
+        return elem.position().left / w * paperW;
+    };
+
+    function getY(elem) {
+        return elem.position().top / h * paperH;
+    };
+
+    function getW(elem) {
+        return elem.width() / w * paperW;
+    }
+    const docDefinition = {
+        info: {
+            title: 'certificate',
+        },
+        pageSize: 'A4',
+        pageOrientation: orientation,
+        content: [{
+                image: bgImage,
+                absolutePosition: {
+                    x: 0,
+                    y: 0
+                },
+                width: paperW,
+                height: paperH,
+            },
+            {
+                table: {
+                    widths: [getW($('.cert-name'))],
+                    body: [
+                        [{
+                            fontSize: 24,
+                            text: $('.cert-name').text(),
+                            border: [false, false, false, false],
+                            margin: [-5, -5, -5, -5],
+                            
+                        }]
+                    ],
+                },
+                absolutePosition: {
+                    x: getX($('.cert-name')),
+                    y: getY($('.cert-name'))
+                },
+            },
+            {
+                text: $('.cert-number').text(),
+                absolutePosition: {
+                    x: getX($('.cert-number')),
+                    y: getY($('.cert-number'))
+                }
+            },
+            {
+                text: $('.cert-course').text(),
+                absolutePosition: {
+                    x: getX($('.cert-course')),
+                    y: getY($('.cert-course'))
+                }
+            },
+            {
+                text: $('.cert-date').text(),
+                absolutePosition: {
+                    x: getX($('.cert-date')),
+                    y: getY($('.cert-date'))
+                }
+            },
+            {
+                text: $('.cert-duration').text(),
+                absolutePosition: {
+                    x: getX($('.cert-duration')),
+                    y: getY($('.cert-duration'))
+                }
+            }
+        ],
+    };
+
+    $('#previewFancyLink')[0].innerHTML = `<a data-fancybox data-type="iframe" data-src="" href="javascript:;"></a>`;
+    pdfMake.createPdf(docDefinition).getBase64((data) => {
+        $('#previewFancyLink a').attr('data-src', `data:application/pdf;base64,${data}`).click();
+    });
+
+    // pdfMake.createPdf(docDefinition).download('optionalName.pdf');
 }
