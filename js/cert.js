@@ -25,7 +25,7 @@ const elements = [{
 ];
 
 // GETTING DATA
-$.getJSON("json/data.json")
+$.getJSON("/cert-generator/json/data.json")
     .done(function (json) {
         userData = defaultData = json;
     })
