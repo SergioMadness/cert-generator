@@ -71,6 +71,7 @@ gulp.task("serve", gulp.series(gulp.parallel("sass", "babel"), /*"views",*/ () =
 
   gulp.watch("./css/*.css").on("change", browserSync.reload);
   gulp.watch("./js/dist/*.js").on("change", browserSync.reload);
+  gulp.watch("./json/*.json").on("change", browserSync.reload);
   gulp.watch("./*.html").on("change", browserSync.reload);
 }));
 

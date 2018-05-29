@@ -588,13 +588,13 @@
 														<div class="form-group">
 															<label>Файл изображения</label>
 															<label class="custom-file">
-																<input type="file" id="file-0" class="custom-file-input" accept="image/gif, image/jpeg, image/png">
+																<input type="file" id="fileBg" class="custom-file-input" accept="image/gif, image/jpeg, image/png">
 																<span class="custom-file-control"></span>
 															</label>
 														</div>
 														<div class="form-group">
 															<label for="bg-number-size">Размер фона</label>
-															<select class="form-control" id="bg-number-size">
+															<select class="form-control" id="bg-size">
 																<option>Растянуть</option>
 																<option>По ширине</option>
 																<option>По высоте</option>
@@ -603,6 +603,7 @@
 													</div>
 												</div>
 											</div>
+											<!-- CONTROLS-NAME -->
 											<div class="card mb-0">
 												<div class="card-header" role="tab" id="headingTwo">
 													<h5 class="mb-0">
@@ -612,27 +613,27 @@
 													</h5>
 												</div>
 												<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-name">
 														<div class="form-group">
 															<label class="form-check-label">
-																<input class="form-check-input" type="checkbox" id="name-number-border"> Скрыть рамку блока
+																<input class="form-check-input control-hidder" type="checkbox"> Скрыть рамку блока
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="name-number-top">Расстояние от верхнего края</label>
-															<input type="number" class="form-control" id="name-number-top" value="0" min="0">
+															<label>Расстояние от верхнего края</label>
+															<input type="number" class="form-control control-top" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="name-number-left">Расстояние от левого края</label>
-															<input type="number" class="form-control" id="name-number-left" value="0" min="0">
+															<label>Расстояние от левого края</label>
+															<input type="number" class="form-control control-left" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="name-number-width">Максимальная ширина блока</label>
-															<input type="number" class="form-control" id="name-number-width" value="" min="0">
+															<label>Максимальная ширина блока</label>
+															<input type="number" class="form-control control-width" value="" min="0">
 														</div>
 														<div class="form-group">
-															<label for="name-select-font-family">Выбрать шрифт</label>
-															<select class="form-control" id="name-select-font-family">
+															<label>Выбрать шрифт</label>
+															<select class="form-control control-font-family">
 																<option>Open Sans</option>
 																<option>Roboto</option>
 																<option>Montserrat</option>
@@ -640,20 +641,20 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="name-number-font-size">Размер шрифта</label>
-															<input type="number" class="form-control" id="name-number-font-size" value="16" min="0">
+															<label>Размер шрифта</label>
+															<input type="number" class="form-control control-font-size" value="16" min="0">
 														</div>
 														<div class="form-group">
-															<label for="name-number-line-height">Интервал между строк (Х * размер шрифта)</label>
-															<input type="number" class="form-control" id="name-number-line-height" value="1.25" min="0" step="0.01">
+															<label>Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control control-line-height" value="1.25" min="0" step="0.01">
 														</div>
 														<div class="form-group">
-															<label for="name-number-color">Цвет шрифта</label>
-															<input type="color" class="form-control" id="name-number-color" value="#000000">
+															<label>Цвет шрифта</label>
+															<input type="color" class="form-control control-color" value="#000000">
 														</div>
 														<div class="form-group">
-															<label for="name-number-font-style">Стиль шрифта</label>
-															<select class="form-control" id="name-select-font-style">
+															<label>Стиль шрифта</label>
+															<select class="form-control control-font-style">
 																<option>По умолчанию</option>
 																<option>Жирный</option>
 																<option>Курсив</option>
@@ -661,8 +662,8 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="name-number-text-align">Выравнивание</label>
-															<select class="form-control" id="name-select-text-align">
+															<label>Выравнивание</label>
+															<select class="form-control control-text-align">
 																<option>По левому краю</option>
 																<option>По правому краю</option>
 																<option>По центру</option>
@@ -672,6 +673,7 @@
 													</div>
 												</div>
 											</div>
+											<!-- CONTROLS-NUMBER -->
 											<div class="card mb-0">
 												<div class="card-header" role="tab" id="headingThree">
 													<h5 class="mb-0">
@@ -681,27 +683,27 @@
 													</h5>
 												</div>
 												<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-number">
 														<div class="form-group">
 															<label class="form-check-label">
-																<input class="form-check-input" type="checkbox" id="number-number-border"> Скрыть рамку блока
+																<input class="form-check-input control-hidder" type="checkbox"> Скрыть рамку блока
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="number-number-top">Расстояние от верхнего края</label>
-															<input type="number" class="form-control" id="number-number-top" value="0" min="0">
+															<label>Расстояние от верхнего края</label>
+															<input type="number" class="form-control control-top" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="number-number-left">Расстояние от левого края</label>
-															<input type="number" class="form-control" id="number-number-left" value="0" min="0">
+															<label>Расстояние от левого края</label>
+															<input type="number" class="form-control control-left" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="number-number-width">Максимальная ширина блока</label>
-															<input type="number" class="form-control" id="number-number-width" value="" min="0">
+															<label>Максимальная ширина блока</label>
+															<input type="number" class="form-control control-width" value="" min="0">
 														</div>
 														<div class="form-group">
-															<label for="number-select-font-family">Выбрать шрифт</label>
-															<select class="form-control" id="number-select-font-family">
+															<label>Выбрать шрифт</label>
+															<select class="form-control control-font-family">
 																<option>Open Sans</option>
 																<option>Roboto</option>
 																<option>Montserrat</option>
@@ -709,20 +711,20 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="number-number-font-size">Размер шрифта</label>
-															<input type="number" class="form-control" id="number-number-font-size" value="16" min="0">
+															<label>Размер шрифта</label>
+															<input type="number" class="form-control control-font-size" value="16" min="0">
 														</div>
 														<div class="form-group">
-															<label for="number-number-line-height">Интервал между строк (Х * размер шрифта)</label>
-															<input type="number" class="form-control" id="number-number-line-height" value="1.25" min="0" step="0.01">
+															<label>Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control control-line-height" value="1.25" min="0" step="0.01">
 														</div>
 														<div class="form-group">
-															<label for="number-number-color">Цвет шрифта</label>
-															<input type="color" class="form-control" id="number-number-color" value="#000000">
+															<label>Цвет шрифта</label>
+															<input type="color" class="form-control control-color" value="#000000">
 														</div>
 														<div class="form-group">
-															<label for="number-number-font-style">Стиль шрифта</label>
-															<select class="form-control" id="number-select-font-style">
+															<label>Стиль шрифта</label>
+															<select class="form-control control-font-style">
 																<option>По умолчанию</option>
 																<option>Жирный</option>
 																<option>Курсив</option>
@@ -730,8 +732,8 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="number-number-text-align">Выравнивание</label>
-															<select class="form-control" id="number-select-text-align">
+															<label>Выравнивание</label>
+															<select class="form-control control-text-align">
 																<option>По левому краю</option>
 																<option>По правому краю</option>
 																<option>По центру</option>
@@ -741,6 +743,7 @@
 													</div>
 												</div>
 											</div>
+											<!-- CONTROLS-COURSE -->
 											<div class="card mb-0">
 												<div class="card-header" role="tab" id="headingFour">
 													<h5 class="mb-0">
@@ -750,27 +753,27 @@
 													</h5>
 												</div>
 												<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-course">
 														<div class="form-group">
 															<label class="form-check-label">
-																<input class="form-check-input" type="checkbox" id="course-number-border"> Скрыть рамку блока
+																<input class="form-check-input control-hidder" type="checkbox"> Скрыть рамку блока
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="course-number-top">Расстояние от верхнего края</label>
-															<input type="number" class="form-control" id="course-number-top" value="0" min="0">
+															<label>Расстояние от верхнего края</label>
+															<input type="number" class="form-control control-top" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="course-number-left">Расстояние от левого края</label>
-															<input type="number" class="form-control" id="course-number-left" value="0" min="0">
+															<label>Расстояние от левого края</label>
+															<input type="number" class="form-control control-left" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="course-number-width">Максимальная ширина блока</label>
-															<input type="number" class="form-control" id="course-number-width" value="" min="0">
+															<label>Максимальная ширина блока</label>
+															<input type="number" class="form-control control-width" value="" min="0">
 														</div>
 														<div class="form-group">
-															<label for="course-select-font-family">Выбрать шрифт</label>
-															<select class="form-control" id="course-select-font-family">
+															<label>Выбрать шрифт</label>
+															<select class="form-control control-font-family">
 																<option>Open Sans</option>
 																<option>Roboto</option>
 																<option>Montserrat</option>
@@ -778,20 +781,20 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="course-number-font-size">Размер шрифта</label>
-															<input type="number" class="form-control" id="course-number-font-size" value="16" min="0">
+															<label>Размер шрифта</label>
+															<input type="number" class="form-control control-font-size" value="16" min="0">
 														</div>
 														<div class="form-group">
-															<label for="course-number-line-height">Интервал между строк (Х * размер шрифта)</label>
-															<input type="number" class="form-control" id="course-number-line-height" value="1.25" min="0" step="0.01">
+															<label>Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control control-line-height" value="1.25" min="0" step="0.01">
 														</div>
 														<div class="form-group">
-															<label for="course-number-color">Цвет шрифта</label>
-															<input type="color" class="form-control" id="course-number-color" value="#000000">
+															<label>Цвет шрифта</label>
+															<input type="color" class="form-control control-color" value="#000000">
 														</div>
 														<div class="form-group">
-															<label for="course-number-font-style">Стиль шрифта</label>
-															<select class="form-control" id="course-select-font-style">
+															<label>Стиль шрифта</label>
+															<select class="form-control control-font-style">
 																<option>По умолчанию</option>
 																<option>Жирный</option>
 																<option>Курсив</option>
@@ -799,8 +802,8 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="course-number-text-align">Выравнивание</label>
-															<select class="form-control" id="course-select-text-align">
+															<label>Выравнивание</label>
+															<select class="form-control control-text-align">
 																<option>По левому краю</option>
 																<option>По правому краю</option>
 																<option>По центру</option>
@@ -810,6 +813,7 @@
 													</div>
 												</div>
 											</div>
+											<!-- CONTROLS-DATE -->
 											<div class="card mb-0">
 												<div class="card-header" role="tab" id="headingFive">
 													<h5 class="mb-0">
@@ -819,27 +823,27 @@
 													</h5>
 												</div>
 												<div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-date">
 														<div class="form-group">
 															<label class="form-check-label">
-																<input class="form-check-input" type="checkbox" id="date-number-border"> Скрыть рамку блока
+																<input class="form-check-input control-hidder" type="checkbox"> Скрыть рамку блока
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="date-number-top">Расстояние от верхнего края</label>
-															<input type="number" class="form-control" id="date-number-top" value="0" min="0">
+															<label>Расстояние от верхнего края</label>
+															<input type="number" class="form-control control-top" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="date-number-left">Расстояние от левого края</label>
-															<input type="number" class="form-control" id="date-number-left" value="0" min="0">
+															<label>Расстояние от левого края</label>
+															<input type="number" class="form-control control-left" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="date-number-width">Максимальная ширина блока</label>
-															<input type="number" class="form-control" id="date-number-width" value="" min="0">
+															<label>Максимальная ширина блока</label>
+															<input type="number" class="form-control control-width" value="" min="0">
 														</div>
 														<div class="form-group">
-															<label for="date-select-font-family">Выбрать шрифт</label>
-															<select class="form-control" id="date-select-font-family">
+															<label>Выбрать шрифт</label>
+															<select class="form-control control-font-family">
 																<option>Open Sans</option>
 																<option>Roboto</option>
 																<option>Montserrat</option>
@@ -847,20 +851,20 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="date-number-font-size">Размер шрифта</label>
-															<input type="number" class="form-control" id="date-number-font-size" value="16" min="0">
+															<label>Размер шрифта</label>
+															<input type="number" class="form-control control-font-size" value="16" min="0">
 														</div>
 														<div class="form-group">
-															<label for="date-number-line-height">Интервал между строк (Х * размер шрифта)</label>
-															<input type="number" class="form-control" id="date-number-line-height" value="1.25" min="0" step="0.01">
+															<label>Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control control-line-height" value="1.25" min="0" step="0.01">
 														</div>
 														<div class="form-group">
 															<label for="date-number-color">Цвет шрифта</label>
-															<input type="color" class="form-control" id="date-number-color" value="#000000">
+															<input type="color" class="form-control control-color" value="#000000">
 														</div>
 														<div class="form-group">
-															<label for="date-number-font-style">Стиль шрифта</label>
-															<select class="form-control" id="date-select-font-style">
+															<label>Стиль шрифта</label>
+															<select class="form-control control-font-style">
 																<option>По умолчанию</option>
 																<option>Жирный</option>
 																<option>Курсив</option>
@@ -868,8 +872,8 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="date-number-text-align">Выравнивание</label>
-															<select class="form-control" id="date-select-text-align">
+															<label>Выравнивание</label>
+															<select class="form-control control-text-align">
 																<option>По левому краю</option>
 																<option>По правому краю</option>
 																<option>По центру</option>
@@ -879,6 +883,7 @@
 													</div>
 												</div>
 											</div>
+											<!-- CONTROLS-DURATION -->
 											<div class="card mb-0">
 												<div class="card-header" role="tab" id="headingSix">
 													<h5 class="mb-0">
@@ -888,27 +893,27 @@
 													</h5>
 												</div>
 												<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-duration">
 														<div class="form-group">
 															<label class="form-check-label">
-																<input class="form-check-input" type="checkbox" id="duration-number-border"> Скрыть рамку блока
+																<input class="form-check-input control-hidder" type="checkbox"> Скрыть рамку блока
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="duration-number-top">Расстояние от верхнего края</label>
-															<input type="number" class="form-control" id="duration-number-top" value="0" min="0">
+															<label>Расстояние от верхнего края</label>
+															<input type="number" class="form-control control-top" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="duration-number-left">Расстояние от левого края</label>
-															<input type="number" class="form-control" id="duration-number-left" value="0" min="0">
+															<label>Расстояние от левого края</label>
+															<input type="number" class="form-control control-left" value="0" min="0">
 														</div>
 														<div class="form-group">
-															<label for="duration-number-width">Максимальная ширина блока</label>
-															<input type="number" class="form-control" id="duration-number-width" value="" min="0">
+															<label>Максимальная ширина блока</label>
+															<input type="number" class="form-control control-width" value="" min="0">
 														</div>
 														<div class="form-group">
-															<label for="duration-select-font-family">Выбрать шрифт</label>
-															<select class="form-control" id="duration-select-font-family">
+															<label>Выбрать шрифт</label>
+															<select class="form-control control-font-family">
 																<option>Open Sans</option>
 																<option>Roboto</option>
 																<option>Montserrat</option>
@@ -916,20 +921,20 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="duration-number-font-size">Размер шрифта</label>
-															<input type="number" class="form-control" id="duration-number-font-size" value="16" min="0">
+															<label>Размер шрифта</label>
+															<input type="number" class="form-control control-font-size" value="16" min="0">
 														</div>
 														<div class="form-group">
-															<label for="duration-number-line-height">Интервал между строк (Х * размер шрифта)</label>
-															<input type="number" class="form-control" id="duration-number-line-height" value="1.25" min="0" step="0.01">
+															<label>Интервал между строк (Х * размер шрифта)</label>
+															<input type="number" class="form-control control-line-height" value="1.25" min="0" step="0.01">
 														</div>
 														<div class="form-group">
-															<label for="duration-number-color">Цвет шрифта</label>
-															<input type="color" class="form-control" id="duration-number-color" value="#000000">
+															<label>Цвет шрифта</label>
+															<input type="color" class="form-control control-color" value="#000000">
 														</div>
 														<div class="form-group">
-															<label for="duration-number-font-style">Стиль шрифта</label>
-															<select class="form-control" id="duration-select-font-style">
+															<label>Стиль шрифта</label>
+															<select class="form-control control-font-style">
 																<option>По умолчанию</option>
 																<option>Жирный</option>
 																<option>Курсив</option>
@@ -937,8 +942,8 @@
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="duration-number-text-align">Выравнивание</label>
-															<select class="form-control" id="duration-select-text-align">
+															<label>Выравнивание</label>
+															<select class="form-control control-text-align">
 																<option>По левому краю</option>
 																<option>По правому краю</option>
 																<option>По центру</option>

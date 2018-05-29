@@ -1,0 +1,68 @@
+{
+    "name": {
+        "positionTop": "50",
+        "positionLeft": "50",
+        "width": "500",
+        "fontFamily": "Open Sans",
+        "fontSize": "20",
+        "lineHeight": "1.25",
+        "color": "#ff0000",
+        "fontStyle": "Жирный",
+        "textAlign": "По левому краю",
+        "value": "Иванов Иван Иванович"
+    },
+    "number": {
+        "positionTop": "50",
+        "positionLeft": "600",
+        "width": "500",
+        "fontFamily": "Open Sans",
+        "fontSize": "20",
+        "lineHeight": "1.25",
+        "color": "#0000ff",
+        "fontStyle": "Жирный",
+        "textAlign": "По левому краю",
+        "value": "000-0000-000-01"
+    },
+    "course": {
+        "positionTop": "300",
+        "positionLeft": "50",
+        "width": "500",
+        "fontFamily": "Open Sans",
+        "fontSize": "30",
+        "lineHeight": "1.25",
+        "color": "#00ff00",
+        "fontStyle": "По умолчанию",
+        "textAlign": "По левому краю",
+        "value": "Технология блокчейн в сельском хозяйстве"
+    },
+    "date": {
+        "positionTop": "600",
+        "positionLeft": "50",
+        "width": "500",
+        "fontFamily": "Open Sans",
+        "fontSize": "20",
+        "lineHeight": "1.25",
+        "color": "#ff0000",
+        "fontStyle": "По умолчанию",
+        "textAlign": "По левому краю",
+        "value": "Дата окончания: 30.02.2007"
+    },
+    "duration": {
+        "positionTop": "700",
+        "positionLeft": "50",
+        "width": "500",
+        "fontFamily": "Open Sans",
+        "fontSize": "20",
+        "lineHeight": "1.25",
+        "color": "#0000ff",
+        "fontStyle": "По умолчанию",
+        "textAlign": "По левому краю",
+        "value": "Продолжительность: 2 часа"
+    },
+    "background": {
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACAhITMkM1EwMFFCLy8vQiccHBwcJyIXFxcXFyIRDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/2wBDASIzMzQmNCIYGCIUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wgARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABrDH/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAEFAn//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/AX//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/AX//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAY/An//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAE/IX//2gAMAwEAAgADAAAAEAP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/EH//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/EH//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAE/EH//2Q==",
+        "position": "center",
+        "size": "cover"
+    },
+    "orientation": "landscape"
+}
