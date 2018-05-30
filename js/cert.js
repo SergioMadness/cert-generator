@@ -25,7 +25,7 @@ const elements = [{
 ];
 
 // GETTING DATA
-$.getJSON("/cert-generator/json/data.json")
+$.getJSON("/json/data.json")
     .done(function (json) {
         userData = defaultData = json;
     })
@@ -46,23 +46,11 @@ $(document).ready(function () {
             $('.cert-wokrspace__content').css('background-image', `url("${e.target.result}")`);
             userData.background.image = e.target.result;
         });
+        setBgSize();
+        setBgPosition();
     });
-    $('#bg-size').on('change', function (e) {
-        let bgSize = 'cover';
-        switch (e.target.value) {
-            case 'Растянуть':
-                bgSize = 'cover';
-                break;
-            case 'По ширине':
-                bgSize = '100% auto';
-                break;
-            case 'По высоте':
-                bgSize = 'auto 100%';
-                break;
-        }
-        $('.cert-wokrspace__content').css('background-size', bgSize);
-        userData.background.size = e.target.result;
-    });
+    $('#control-bg').find('.control-bg-size').on('change', setBgSize);
+    $('#control-bg').find('.control-bg-position').on('change', setBgPosition);
 
     $.each(elements, function (key, elem) {
         // TOGGLE ACCORDITION
@@ -162,6 +150,56 @@ function renderWorkspace(data) {
         }
     }
 }
+
+// background
+function setBgSize() {
+    let bgSize;
+    switch ($('#control-bg').find('.control-bg-size').val()) {
+        case 'По ширине':
+            bgSize = '100% auto';
+            break;
+        case 'По высоте':
+            bgSize = 'auto 100%';
+            break;
+    }
+    $('.cert-wokrspace__content').css('background-size', bgSize);
+    userData.background.size = $('#control-bg').find('.control-bg-size').val();
+};
+
+function setBgPosition() {
+    let bgPosition;
+    switch ($('#control-bg').find('.control-bg-position').val()) {
+        case 'Верх / Лево':
+            bgPosition = 'top left';
+            break;
+        case 'Верх / Центр':
+            bgPosition = 'top center';
+            break;
+        case 'Верх / Право':
+            bgPosition = 'top right';
+            break;
+        case 'Право / Центр':
+            bgPosition = 'center right';
+            break;
+        case 'Право / Низ':
+            bgPosition = 'bottom right';
+            break;
+        case 'Низ / Центр':
+            bgPosition = 'bottom center';
+            break;
+        case 'Низ / Лево':
+            bgPosition = 'bottom left';
+            break;
+        case 'Лево / Центр':
+            bgPosition = 'center left';
+            break;
+        case 'Центр':
+            bgPosition = 'center center';
+            break;
+    }
+    $('.cert-wokrspace__content').css('background-position', bgPosition);
+    userData.background.position = $('#control-bg').find('.control-bg-position').val();
+};
 
 // set css and text
 function setElement(elem, data) {
@@ -393,11 +431,57 @@ function createPreviewPdf() {
 
     function getW(elem) {
         return elem.width() / w * paperW;
-    }
+    };
 
     function getFont(elem) {
         return elem.css('')
+    };
+
+    function getBgW() {      
+        return (userData.background.size === 'По ширине') ? paperW : '';
     }
+    function getBgH() {
+        return (userData.background.size === 'По высоте') ? paperH : '';
+    }
+
+    function getBgX() {
+        let bgPosition;
+        switch (userData.background.position) {
+            case 'Верх / Лево':
+                bgPosition = 'top left';
+                break;
+            case 'Верх / Центр':
+                bgPosition = 'top center';
+                break;
+            case 'Верх / Право':
+                bgPosition = 'top right';
+                break;
+            case 'Право / Центр':
+                bgPosition = 'center right';
+                break;
+            case 'Право / Низ':
+                bgPosition = 'bottom right';
+                break;
+            case 'Низ / Центр':
+                bgPosition = 'bottom center';
+                break;
+            case 'Низ / Лево':
+                bgPosition = 'bottom left';
+                break;
+            case 'Лево / Центр':
+                bgPosition = 'center left';
+                break;
+            case 'Центр':
+                bgPosition = 'center center';
+                break;
+            default:
+                bgPosition = 'top left';
+                break;
+        }
+        console.log(bgPosition);
+        return 0;
+
+    };
 
     // !!! НУЖНО ИСПРАВИТЬ РАЗМЕРЫ ФОНА
     const docDefinition = {
@@ -406,16 +490,12 @@ function createPreviewPdf() {
         },
         pageSize: 'A4',
         pageOrientation: userData.orientation,
+        background: [{
+            image: userData.background.image,
+            width: getBgW(),
+            height: getBgH(),
+        }],
         content: [{
-                image: userData.background.image,
-                absolutePosition: {
-                    x: 0,
-                    y: 0
-                },
-                width: paperW,
-                height: paperH,
-            },
-            {
                 table: {
                     widths: [getW($('.cert-name'))],
                     body: [

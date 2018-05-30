@@ -584,7 +584,7 @@
 													</h5>
 												</div>
 												<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionIcons">
-													<div class="card-body">
+													<div class="card-body" id="control-bg">
 														<div class="form-group">
 															<label>Файл изображения</label>
 															<label class="custom-file">
@@ -593,11 +593,21 @@
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="bg-number-size">Размер фона</label>
-															<select class="form-control" id="bg-size">
-																<option>Растянуть</option>
+															<label for="bg-number-size">Размер фона / позиция</label>
+															<select class="form-control control-bg-size">
 																<option>По ширине</option>
 																<option>По высоте</option>
+															</select>
+															<select class="form-control control-bg-position">
+																<option>Верх / Лево</option>
+																<option>Верх / Центр</option>
+																<option>Верх / Право</option>
+																<option>Право / Центр</option>
+																<option>Право / Низ</option>
+																<option>Низ / Центр</option>
+																<option>Низ / Лево</option>
+																<option>Лево / Центр</option>
+																<option>Центр</option>
 															</select>
 														</div>
 													</div>
