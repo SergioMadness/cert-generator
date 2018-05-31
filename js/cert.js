@@ -35,10 +35,31 @@ const elements = [{
 //         console.log("Request Failed: " + err);
 //     });
 
-$.getJSON("https://bioinfobot.github.io/data/2017-05.json")
-.done(function( data ) {
-   console.log(data)
-});
+// $.getJSON("https://bioinfobot.github.io/data/2017-05.json")
+// .done(function( data ) {
+//    console.log(data)
+// });
+
+var request = new XMLHttpRequest();
+request.open('GET', 'https://bioinfobot.github.io/data/2017-05.json', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var data1 = JSON.parse(request.responseText);
+    console.log(data1)
+  } else {
+    // We reached our target server, but it returned an error
+    console.log('nothing')
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+  console.log('error')
+};
+
+request.send();
 
 
 
