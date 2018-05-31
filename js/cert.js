@@ -27,6 +27,7 @@ const elements = [{
 // GETTING DATA
 $.getJSON("https://gk061090.github.io/cert-generator/json/data.json")
     .done(function (json) {
+        console.log(json);
         userData = defaultData = json;
     })
     .fail(function (jqxhr, textStatus, error) {
