@@ -25,15 +25,35 @@ const elements = [{
 ];
 
 // GETTING DATA
-$.getJSON("https://gk061090.github.io/cert-generator/json/data.json")
-    .done(function (json) {
-        console.log(json);
-        userData = defaultData = json;
-    })
-    .fail(function (jqxhr, textStatus, error) {
-        var err = textStatus + ", " + error;
-        console.log("Request Failed: " + err);
-    });
+// $.getJSON("https://gk061090.github.io/cert-generator/json/data.json")
+//     .done(function (json) {
+//         console.log(json);
+//         userData = defaultData = json;
+//     })
+//     .fail(function (jqxhr, textStatus, error) {
+//         var err = textStatus + ", " + error;
+//         console.log("Request Failed: " + err);
+//     });
+
+var request = new XMLHttpRequest();
+request.open('GET', '/cert-generator/json/data.json', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var data1 = JSON.parse(request.responseText);
+    console.log(data1);
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+
 
 $(document).ready(function () {
     renderWorkspace(defaultData);
