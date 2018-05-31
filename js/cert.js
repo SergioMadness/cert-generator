@@ -45,7 +45,7 @@ request.onload = function() {
     console.log(data1);
   } else {
     // We reached our target server, but it returned an error
-
+    console.log('nothing');
   }
 };
 
