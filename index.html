@@ -593,23 +593,20 @@
 															</label>
 														</div>
 														<div class="form-group">
-															<label for="bg-number-size">Размер фона / позиция</label>
+															<label for="bg-number-size">Размер фона</label>
 															<select class="form-control control-bg-size">
 																<option>По ширине</option>
 																<option>По высоте</option>
 															</select>
-															<select class="form-control control-bg-position">
-																<option>Верх / Лево</option>
-																<option>Верх / Центр</option>
-																<option>Верх / Право</option>
-																<option>Право / Центр</option>
-																<option>Право / Низ</option>
-																<option>Низ / Центр</option>
-																<option>Низ / Лево</option>
-																<option>Лево / Центр</option>
-																<option>Центр</option>
-															</select>
 														</div>
+														<div class="form-group">
+															<label for="bg-number-size">Отступ от верхнего левого края</label>
+															<div class="control-bg-position">
+																<input type="number" class="form-control control-top" value="0">
+																<input type="number" class="form-control control-left" value="0">
+															</div>
+														</div>
+														<span class="cert-bg-tip">* - отступ возможен непропорциональный при печати. Используйте "Предпросмотр", чтобы увидеть итоговый результат</span>
 													</div>
 												</div>
 											</div>
@@ -644,8 +641,8 @@
 														<div class="form-group">
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
-																<option>Open Sans</option>
 																<option>Roboto</option>
+																<option>Open Sans</option>
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -714,8 +711,8 @@
 														<div class="form-group">
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
-																<option>Open Sans</option>
 																<option>Roboto</option>
+																<option>Open Sans</option>
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -784,8 +781,8 @@
 														<div class="form-group">
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
-																<option>Open Sans</option>
 																<option>Roboto</option>
+																<option>Open Sans</option>																
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -854,8 +851,8 @@
 														<div class="form-group">
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
-																<option>Open Sans</option>
 																<option>Roboto</option>
+																<option>Open Sans</option>																
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -924,8 +921,8 @@
 														<div class="form-group">
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
-																<option>Open Sans</option>
 																<option>Roboto</option>
+																<option>Open Sans</option>																
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -968,7 +965,7 @@
 								</div>
 							</div>
 							<div>
-								<button class="btn btn-primary" id="preview">Предпросмотр</button> 
+								<button class="btn btn-primary" id="preview">Предпросмотр</button>
 								<button class="btn btn-primary">Готово</button>
 								<div id="previewFancyLink" style="display:none"></div>
 								</a>

@@ -107,4 +107,11 @@
         -webkit-appearance: none;
         height: 50px;
     }
+
+    & .control-bg-position {
+        display: flex;
+    }
+    & .cert-bg-tip {
+        font-size: 0.8rem;
+    }
 }

@@ -1,6 +1,7 @@
 // GLOBALS
 let defaultData = {},
     userData = {},
+    loadedImg = {},
     scale = 1;
 const elements = [{
         workspace: $('.cert-name'),
@@ -25,43 +26,15 @@ const elements = [{
 ];
 
 // GETTING DATA
-// $.getJSON("https://gk061090.github.io/cert-generator/json/data.json")
-//     .done(function (json) {
-//         console.log(json);
-//         userData = defaultData = json;
-//     })
-//     .fail(function (jqxhr, textStatus, error) {
-//         var err = textStatus + ", " + error;
-//         console.log("Request Failed: " + err);
-//     });
-
-// $.getJSON("https://bioinfobot.github.io/data/2017-05.json")
-// .done(function( data ) {
-//    console.log(data)
-// });
-
-var request = new XMLHttpRequest();
-request.open('GET', 'https://bioinfobot.github.io/data/2017-05.json', true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // Success!
-    var data1 = JSON.parse(request.responseText);
-    console.log(data1)
-  } else {
-    // We reached our target server, but it returned an error
-    console.log('nothing')
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-  console.log('error')
-};
-
-request.send();
-
-
+$.getJSON("/json/data.json")
+    .done(function (json) {
+        // console.log(json);
+        userData = defaultData = json;
+    })
+    .fail(function (jqxhr, textStatus, error) {
+        var err = textStatus + ", " + error;
+        console.log("Request Failed: " + err);
+    });
 
 $(document).ready(function () {
     renderWorkspace(defaultData);
@@ -71,15 +44,27 @@ $(document).ready(function () {
 
     // bg picker
     $('#fileBg').on('change', function (e) {
-        readFile(this.files[0], function (e) {
-            $('.cert-wokrspace__content').css('background-image', `url("${e.target.result}")`);
-            userData.background.image = e.target.result;
-        });
+        let fr = new FileReader;
+        fr.readAsDataURL(this.files[0]);
+        fr.onload = function () {
+            let img = new Image;
+            img.onload = function () {
+                loadedImg = {
+                    width: img.width,
+                    height: img.height
+                };
+            };
+            img.src = fr.result;
+            $('.cert-wokrspace__content').css('background-image', `url("${img.src}")`);
+            userData.background.image = img.src;
+        };
+
         setBgSize();
-        setBgPosition();
+        setBgPosition(userData);
     });
     $('#control-bg').find('.control-bg-size').on('change', setBgSize);
-    $('#control-bg').find('.control-bg-position').on('change', setBgPosition);
+    $('#control-bg').find('.control-top').on('input', changeBgPosition);
+    $('#control-bg').find('.control-left').on('input', changeBgPosition);
 
     $.each(elements, function (key, elem) {
         // TOGGLE ACCORDITION
@@ -195,40 +180,21 @@ function setBgSize() {
     userData.background.size = $('#control-bg').find('.control-bg-size').val();
 };
 
-function setBgPosition() {
-    let bgPosition;
-    switch ($('#control-bg').find('.control-bg-position').val()) {
-        case 'Верх / Лево':
-            bgPosition = 'top left';
-            break;
-        case 'Верх / Центр':
-            bgPosition = 'top center';
-            break;
-        case 'Верх / Право':
-            bgPosition = 'top right';
-            break;
-        case 'Право / Центр':
-            bgPosition = 'center right';
-            break;
-        case 'Право / Низ':
-            bgPosition = 'bottom right';
-            break;
-        case 'Низ / Центр':
-            bgPosition = 'bottom center';
-            break;
-        case 'Низ / Лево':
-            bgPosition = 'bottom left';
-            break;
-        case 'Лево / Центр':
-            bgPosition = 'center left';
-            break;
-        case 'Центр':
-            bgPosition = 'center center';
-            break;
-    }
-    $('.cert-wokrspace__content').css('background-position', bgPosition);
-    userData.background.position = $('#control-bg').find('.control-bg-position').val();
+function setBgPosition(data) {
+    let bgX = data.background.positionLeft,
+        bgY = data.background.positionTop;
+    $('.cert-wokrspace__content').css('background-position', `${bgX}px ${bgY}px`);
+    $('#control-bg').find('.control-top').val(bgY);
+    $('#control-bg').find('.control-left').val(bgX);
 };
+
+function changeBgPosition() {
+    let bgY = $('#control-bg').find('.control-top').val();
+    let bgX = $('#control-bg').find('.control-left').val();
+    $('.cert-wokrspace__content').css('background-position', `${bgX}px ${bgY}px`);
+    userData.background.positionTop = bgY;
+    userData.background.positionLeft = bgX;
+}
 
 // set css and text
 function setElement(elem, data) {
@@ -462,57 +428,55 @@ function createPreviewPdf() {
         return elem.width() / w * paperW;
     };
 
-    function getFont(elem) {
-        return elem.css('')
+    function getFontFamily(elem) {
+        return elem.css('font-family');
+    }
+
+    function getFontSize(elem) {
+        return parseInt(elem.css('font-size'), 10) / w * paperW;
     };
 
-    function getBgW() {      
-        return (userData.background.size === 'По ширине') ? paperW : '';
-    }
-    function getBgH() {
-        return (userData.background.size === 'По высоте') ? paperH : '';
+    function getFontWeight(elem) {
+        return elem.css('font-weight') === 'bold';
     }
 
-    function getBgX() {
-        let bgPosition;
-        switch (userData.background.position) {
-            case 'Верх / Лево':
-                bgPosition = 'top left';
-                break;
-            case 'Верх / Центр':
-                bgPosition = 'top center';
-                break;
-            case 'Верх / Право':
-                bgPosition = 'top right';
-                break;
-            case 'Право / Центр':
-                bgPosition = 'center right';
-                break;
-            case 'Право / Низ':
-                bgPosition = 'bottom right';
-                break;
-            case 'Низ / Центр':
-                bgPosition = 'bottom center';
-                break;
-            case 'Низ / Лево':
-                bgPosition = 'bottom left';
-                break;
-            case 'Лево / Центр':
-                bgPosition = 'center left';
-                break;
-            case 'Центр':
-                bgPosition = 'center center';
-                break;
-            default:
-                bgPosition = 'top left';
-                break;
+    function getFontStyle(elem) {
+        return elem.css('font-style') === 'italic';
+    }
+
+    function getLineHeight(elem) {
+        return parseInt(elem.css('line-height'), 10) / getFontSize(elem) / w * paperW;
+    }
+
+    function rgb2hex(rgb) {
+        if (rgb.search("rgb") == -1) {
+            return rgb;
+        } else {
+            rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
         }
-        console.log(bgPosition);
-        return 0;
+    }
 
-    };
+    function getColor(elem) {
+        return rgb2hex(elem.css('color'));
+    }
 
-    // !!! НУЖНО ИСПРАВИТЬ РАЗМЕРЫ ФОНА
+    function getAlignment(elem) {
+        return elem.css('text-align');
+    }
+
+    function getBgW() {
+        return (userData.background.size === 'По ширине') ? paperW : paperH * loadedImg.width / loadedImg.height;
+    }
+
+    function getBgH() {
+        return (userData.background.size === 'По высоте') ? paperH : paperW * loadedImg.height / loadedImg.width;
+    }
+
     const docDefinition = {
         info: {
             title: 'certificate',
@@ -523,17 +487,26 @@ function createPreviewPdf() {
             image: userData.background.image,
             width: getBgW(),
             height: getBgH(),
+            absolutePosition: {
+                x: Number(userData.background.positionLeft),
+                y: Number(userData.background.positionTop)
+            }
         }],
         content: [{
                 table: {
                     widths: [getW($('.cert-name'))],
                     body: [
                         [{
-                            fontSize: 24,
+                            fontSize: getFontSize($('.cert-name')),
+                            font: getFontFamily($('.cert-name')),
+                            bold: getFontWeight($('.cert-name')),
+                            italics: getFontStyle($('.cert-name')),
+                            lineHeight: getLineHeight($('.cert-name')),
+                            alignment: getAlignment($('.cert-name')),
+                            color: getColor($('.cert-name')),
                             text: $('.cert-name').text(),
                             border: [false, false, false, false],
                             margin: [-5, -5, -5, -5],
-
                         }]
                     ],
                 },
@@ -543,28 +516,92 @@ function createPreviewPdf() {
                 },
             },
             {
-                text: $('.cert-number').text(),
+                table: {
+                    widths: [getW($('.cert-number'))],
+                    body: [
+                        [{
+                            fontSize: getFontSize($('.cert-number')),
+                            font: getFontFamily($('.cert-number')),
+                            bold: getFontWeight($('.cert-number')),
+                            italics: getFontStyle($('.cert-number')),
+                            lineHeight: getLineHeight($('.cert-number')),
+                            alignment: getAlignment($('.cert-number')),
+                            color: getColor($('.cert-number')),
+                            text: $('.cert-number').text(),
+                            border: [false, false, false, false],
+                            margin: [-5, -5, -5, -5],
+                        }]
+                    ],
+                },
                 absolutePosition: {
                     x: getX($('.cert-number')),
                     y: getY($('.cert-number'))
                 }
             },
             {
-                text: $('.cert-course').text(),
+                table: {
+                    widths: [getW($('.cert-course'))],
+                    body: [
+                        [{
+                            fontSize: getFontSize($('.cert-course')),
+                            font: getFontFamily($('.cert-course')),
+                            bold: getFontWeight($('.cert-course')),
+                            italics: getFontStyle($('.cert-course')),
+                            lineHeight: getLineHeight($('.cert-course')),
+                            alignment: getAlignment($('.cert-course')),
+                            color: getColor($('.cert-course')),
+                            text: $('.cert-course').text(),
+                            border: [false, false, false, false],
+                            margin: [-5, -5, -5, -5],
+                        }]
+                    ],
+                },
                 absolutePosition: {
                     x: getX($('.cert-course')),
                     y: getY($('.cert-course'))
                 }
             },
             {
-                text: $('.cert-date').text(),
+                table: {
+                    widths: [getW($('.cert-date'))],
+                    body: [
+                        [{
+                            fontSize: getFontSize($('.cert-date')),
+                            font: getFontFamily($('.cert-date')),
+                            bold: getFontWeight($('.cert-date')),
+                            italics: getFontStyle($('.cert-date')),
+                            lineHeight: getLineHeight($('.cert-date')),
+                            alignment: getAlignment($('.cert-date')),
+                            color: getColor($('.cert-date')),
+                            text: $('.cert-date').text(),
+                            border: [false, false, false, false],
+                            margin: [-5, -5, -5, -5],
+                        }]
+                    ],
+                },
                 absolutePosition: {
                     x: getX($('.cert-date')),
                     y: getY($('.cert-date'))
                 }
             },
             {
-                text: $('.cert-duration').text(),
+                table: {
+                    widths: [getW($('.cert-duration'))],
+                    body: [
+                        [{
+                            fontSize: getFontSize($('.cert-duration')),
+                            font: getFontFamily($('.cert-duration')),
+                            bold: getFontWeight($('.cert-duration')),
+                            italics: getFontStyle($('.cert-duration')),
+                            lineHeight: getLineHeight($('.cert-duration')),
+                            alignment: getAlignment($('.cert-duration')),
+                            color: getColor($('.cert-duration')),
+                            text: $('.cert-duration').text(),
+                            border: [false, false, false, false],
+                            margin: [-5, -5, -5, -5],
+                        }]
+                    ],
+                },
                 absolutePosition: {
                     x: getX($('.cert-duration')),
                     y: getY($('.cert-duration'))
@@ -572,6 +609,33 @@ function createPreviewPdf() {
             }
         ],
     };
+
+    pdfMake.fonts = {
+        'Roboto': {
+            normal: 'Roboto-Regular.ttf',
+            bold: 'Roboto-Bold.ttf',
+            italics: 'Roboto-Italic.ttf',
+            bolditalics: 'Roboto-BoldItalic.ttf'
+        },
+        'Open Sans': {
+            normal: 'OpenSans-Regular.ttf',
+            bold: 'OpenSans-Bold.ttf',
+            italics: 'OpenSans-Italic.ttf',
+            bolditalics: 'OpenSans-BoldItalic.ttf'
+        },
+        'Montserrat': {
+            normal: 'Montserrat-Regular.ttf',
+            bold: 'Montserrat-Bold.ttf',
+            italics: 'Montserrat-Italic.ttf',
+            bolditalics: 'Montserrat-BoldItalic.ttf'
+        },
+        'Lora': {
+            normal: 'Lora-Regular.ttf',
+            bold: 'Lora-Bold.ttf',
+            italics: 'Lora-Italic.ttf',
+            bolditalics: 'Lora-BoldItalic.ttf'
+        }
+    }
 
     $('#previewFancyLink')[0].innerHTML = `<a data-fancybox data-type="iframe" data-src="" href="javascript:;"></a>`;
     pdfMake.createPdf(docDefinition).getBase64((data) => {
