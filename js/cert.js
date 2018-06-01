@@ -32,7 +32,7 @@ const elements = [
 ];
 
 // GETTING DATA
-$.getJSON("cert-generator/json/data.json")
+$.getJSON("json/data.json")
   .done(function(json) {
     userData = defaultData = json;
   })
