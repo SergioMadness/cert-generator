@@ -2,6 +2,7 @@
 #loading-wrapper {
     display: none;
 }
+
 .cert-font__roboto {
     font-family: 'Roboto', sans-serif;
 }
@@ -79,6 +80,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
         border-bottom: 1px dashed #eee;
         & label {
             line-height: 1.25;
@@ -107,11 +109,14 @@
         -webkit-appearance: none;
         height: 50px;
     }
-
     & .control-bg-position {
         display: flex;
     }
     & .cert-bg-tip {
         font-size: 0.8rem;
+    }
+    & .control-value {
+        width: auto;
+        min-width: 400px;
     }
 }

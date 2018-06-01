@@ -677,6 +677,14 @@
 																<option>По ширине</option>
 															</select>
 														</div>
+														<div class="form-group">
+															<label>Текст</label>
+															<input type="text" class="form-control control-value">
+														</div>
+														<div class="form-group">
+															<label>Максимальное число строк</label>
+															<input type="number" class="form-control control-max-str" min='1'>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -782,7 +790,7 @@
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
 																<option>Roboto</option>
-																<option>Open Sans</option>																
+																<option>Open Sans</option>
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -852,7 +860,7 @@
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
 																<option>Roboto</option>
-																<option>Open Sans</option>																
+																<option>Open Sans</option>
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -922,7 +930,7 @@
 															<label>Выбрать шрифт</label>
 															<select class="form-control control-font-family">
 																<option>Roboto</option>
-																<option>Open Sans</option>																
+																<option>Open Sans</option>
 																<option>Montserrat</option>
 																<option>Lora</option>
 															</select>
@@ -966,7 +974,7 @@
 							</div>
 							<div>
 								<button class="btn btn-primary" id="preview">Предпросмотр</button>
-								<button class="btn btn-primary">Готово</button>
+								<button class="btn btn-primary" id="save">Сохранить</button>
 								<div id="previewFancyLink" style="display:none"></div>
 								</a>
 							</div>
@@ -1018,7 +1026,6 @@
 		<!-- Common JS -->
 		<script src="js/common.js"></script>
 		<script src="js/dist/cert.js"></script>
-
 </body>
 
 </html>

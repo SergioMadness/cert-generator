@@ -9,7 +9,8 @@
         "color": "#ff0000",
         "fontStyle": "Жирный",
         "textAlign": "По левому краю",
-        "value": "Иванов Иван Иванович"
+        "value": "Иванов Иван Иванович",
+        "maxStr": "2"
     },
     "number": {
         "positionTop": "50",
