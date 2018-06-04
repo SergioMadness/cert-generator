@@ -35,6 +35,7 @@ const elements = [
 $.getJSON("json/data.json")
   .done(function(json) {
     userData = defaultData = json;
+    renderWorkspace(defaultData);
   })
   .fail(function(jqxhr, textStatus, error) {
     var err = textStatus + ", " + error;
@@ -42,7 +43,6 @@ $.getJSON("json/data.json")
   });
 
 $(document).ready(function() {
-  renderWorkspace(defaultData);
   // default zoom by workspace width
   scale = $(".cert-wokrspace__content").width() / $(".cert-wokrspace").width();
   setWorkspaceZoom(scale);
