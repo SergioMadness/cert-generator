@@ -105,7 +105,7 @@ const elements = [{
 ];
 
 // GETTING DATA
-$.getJSON("json/data1.json")
+$.getJSON("json/data.json")
   .done(function (json) {
     userData = json;
     defaultData = json;
