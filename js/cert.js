@@ -258,7 +258,8 @@ $(document).ready(function () {
   });
 
   $("#reset").click(function () {
-    console.log(resetData);
+    userData = jQuery.extend(true, {}, resetData);
+    defaultData = jQuery.extend(true, {}, resetData);
     renderWorkspace(resetData);
   });
 });
