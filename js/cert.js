@@ -261,6 +261,16 @@ $(document).ready(function () {
     userData = jQuery.extend(true, {}, resetData);
     defaultData = jQuery.extend(true, {}, resetData);
     renderWorkspace(resetData);
+    $.each(elements, function (key, elem) {
+      // DRAG AND RESIZE
+      setDragResize(
+        $(elem.workspace[0]),
+        $(elem.control[0]).find(".control-top"),
+        $(elem.control[0]).find(".control-left"),
+        $(elem.control[0]).find(".control-width"),
+        userData[elem.data]
+      );
+    });
   });
 });
 /*
