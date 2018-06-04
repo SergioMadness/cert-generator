@@ -32,28 +32,28 @@ const elements = [
 ];
 
 // GETTING DATA
-$.getJSON("json/data.json")
-  .done(function (json) {
+$.getJSON("/json/data.json")
+  .done(function(json) {
     userData = defaultData = json;
-    renderWorkspace(defaultData);
   })
-  .fail(function (jqxhr, textStatus, error) {
+  .fail(function(jqxhr, textStatus, error) {
     var err = textStatus + ", " + error;
     console.log("Request Failed: " + err);
   });
 
-$(document).ready(function () {
+$(document).ready(function() {
+  renderWorkspace(defaultData);
   // default zoom by workspace width
   scale = $(".cert-wokrspace__content").width() / $(".cert-wokrspace").width();
   setWorkspaceZoom(scale);
 
   // bg picker
-  $("#fileBg").on("change", function (e) {
+  $("#fileBg").on("change", function(e) {
     let fr = new FileReader();
     fr.readAsDataURL(this.files[0]);
-    fr.onload = function () {
+    fr.onload = function() {
       let img = new Image();
-      img.onload = function () {
+      img.onload = function() {
         loadedImg = {
           width: img.width,
           height: img.height
@@ -80,9 +80,9 @@ $(document).ready(function () {
     .find(".control-left")
     .on("input", changeBgPosition);
 
-  $.each(elements, function (key, elem) {
+  $.each(elements, function(key, elem) {
     // TOGGLE ACCORDITION
-    elem.workspace[0].addEventListener("click", function () {
+    elem.workspace[0].addEventListener("click", function() {
       $(".cert-controls .card-header a")[key + 1].click();
     });
     // ACCORDITION (PANEL) CONTROLS
@@ -135,7 +135,7 @@ $(document).ready(function () {
       elem.workspace[0],
       userData[elem.data]
     );
-    if (key == 0) {
+    // if (key == 0 || key == 1) {
       setValue(
         elem.control[0].querySelector(".control-value"),
         elem.workspace[0],
@@ -146,7 +146,7 @@ $(document).ready(function () {
         elem.workspace[0],
         userData[elem.data]
       );
-    }
+    // }
     // DRAG AND RESIZE
     setDragResize(
       $(elem.workspace[0]),
@@ -156,9 +156,9 @@ $(document).ready(function () {
       userData[elem.data]
     );
   });
-  $.each($(".cert-controls .card-header a"), function (key, elem) {
-    elem.addEventListener("click", function () {
-      $.each(elements, function (key1, elem1) {
+  $.each($(".cert-controls .card-header a"), function(key, elem) {
+    elem.addEventListener("click", function() {
+      $.each(elements, function(key1, elem1) {
         elem1.workspace[0].classList.remove("cert-active");
       });
 
@@ -173,11 +173,11 @@ $(document).ready(function () {
   });
 
   // Create PDF
-  $("#preview").click(function () {
+  $("#preview").click(function() {
     createPreviewPdf();
   });
 
-  $("#save").click(function () {
+  $("#save").click(function() {
     console.log(userData);
   });
 });
@@ -188,24 +188,24 @@ $(document).ready(function () {
 
 // WORKSPACE CONTROLS
 // resize workspace
-$(".cert-wokrspace__zoom").click(function () {
+$(".cert-wokrspace__zoom").click(function() {
   if (scale <= 3) {
     scale += 0.5;
     setWorkspaceZoom(scale);
   }
 });
 // reset workspace
-$(".cert-wokrspace__reset").click(function () {
+$(".cert-wokrspace__reset").click(function() {
   scale = $(".cert-wokrspace__content").width() / $(".cert-wokrspace").width();
   setWorkspaceZoom(scale);
 });
 // reset original
-$(".cert-wokrspace__original").click(function () {
+$(".cert-wokrspace__original").click(function() {
   setWorkspaceZoom(1);
   scale = 1;
 });
 // set landscape
-$(".cert-wokrspace__landscape").click(function () {
+$(".cert-wokrspace__landscape").click(function() {
   $(".cert-wokrspace__content").css({
     height: "793.7px",
     width: "1122.5px"
@@ -213,7 +213,7 @@ $(".cert-wokrspace__landscape").click(function () {
   userData.orientation = "landscape";
 });
 // set portrait
-$(".cert-wokrspace__portrait").click(function () {
+$(".cert-wokrspace__portrait").click(function() {
   $(".cert-wokrspace__content").css({
     height: "1122.5px",
     width: "793.7px"
@@ -248,9 +248,9 @@ function renderWorkspace(data) {
 function setBgSize() {
   let bgSize;
   switch (
-  $("#control-bg")
-    .find(".control-bg-size")
-    .val()
+    $("#control-bg")
+      .find(".control-bg-size")
+      .val()
   ) {
     case "По ширине":
       bgSize = "100% auto";
@@ -379,63 +379,70 @@ function setWorkspaceZoom(scale) {
 // functions for control panel
 // show border for workspace block
 function setBorder(switcher, element) {
-  switcher.addEventListener("click", function (e) {
+  switcher.addEventListener("click", function(e) {
     element.classList.toggle("cert-bordered");
     element.classList.toggle("cert-active");
   });
 }
 // top position
 function setTop(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.top = e.target.value + "px";
     data.positionTop = e.target.value;
   });
 }
 // left position
 function setLeft(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.left = e.target.value + "px";
     data.positionLeft = e.target.value;
   });
 }
 // width
 function setWidth(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.width = e.target.value + "px";
     data.width = e.target.value;
+    // calc font
+    calcViewFont(element, data.maxStr, data.fontSize);
   });
 }
 // font family
 function setFontFamily(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.fontFamily = e.target.value;
     data.fontFamily = e.target.value;
   });
 }
 // font size
 function setFontSize(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
+    if (parseInt(e.target.value) > 500) {
+      e.target.value = 500;
+    }
     element.style.fontSize = e.target.value + "px";
     data.fontSize = e.target.value;
+    // calc font
+    calcViewFont(element, data.maxStr, data.fontSize);
   });
 }
 // line height
 function setLineHeight(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.lineHeight = e.target.value;
     data.lineHeight = e.target.value;
   });
 }
 // color picker
 function setColor(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     element.style.color = e.target.value;
     data.color = e.target.value;
   });
 }
 // font style
 function setFontStyle(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     let style = "normal",
       weight = "normal";
     switch (e.target.value) {
@@ -466,7 +473,7 @@ function setFontStyle(switcher, element, data) {
 }
 // text align
 function setTextAlign(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     let textAlign = "left";
     switch (e.target.value) {
       case "По левому краю":
@@ -488,21 +495,29 @@ function setTextAlign(switcher, element, data) {
 }
 // text value
 function setValue(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
+  switcher.addEventListener("input", function(e) {
     $(element).text(e.target.value);
     data.value = e.target.value;
-    calcViewFont(element, data.maxStr, parseInt($(element).css('font-size'), 10));
+    calcViewFont(
+      element,
+      data.maxStr,
+      parseInt($(element).css("font-size"), 10)
+    );
     $(element).resizable({
       handles: "e, w",
-      containment: "parent",
+      containment: "parent"
     });
   });
 }
 // max number strings in block
 function setMaxStr(switcher, element, data) {
-  switcher.addEventListener("input", function (e) {
-    $(element).css('font-size', `${data.fontSize}px`);
-    calcViewFont(element, e.target.value, parseInt($(element).css('font-size'), 10));
+  switcher.addEventListener("input", function(e) {
+    $(element).css("font-size", `${data.fontSize}px`);
+    calcViewFont(
+      element,
+      e.target.value,
+      parseInt($(element).css("font-size"), 10)
+    );
     data.maxStr = e.target.value;
   });
 }
@@ -517,7 +532,7 @@ function setDragResize(
 ) {
   element.draggable({
     containment: "parent",
-    drag: function (event, ui) {
+    drag: function(event, ui) {
       let top = Math.ceil(ui.position.top),
         left = Math.ceil(ui.position.left);
       switcherTop.val(top);
@@ -529,11 +544,13 @@ function setDragResize(
   element.resizable({
     handles: "e, w",
     containment: "parent",
-    resize: function (event, ui) {
+    resize: function(event, ui) {
       let w = Math.ceil(ui.size.width);
       event.target.style.maxWidth = `${w}px`;
       switcherWidth.val(w);
       data.width = `${w}`;
+      // calc font
+      calcViewFont(element, data.maxStr, data.fontSize);
     }
   });
 }
@@ -808,12 +825,13 @@ function createPreviewPdf() {
 
 /* calculation font size with max strings number */
 function calcViewFont(element, inputValue, fontSize) {
-  let numStr = (elem) => {
-    return $(elem).height() / parseInt($(elem).css('line-height'), 10);
-  }
+  $(element).css("font-size", `${fontSize}px`); // reset
+  let numStr = elem => {
+    return $(elem).height() / parseInt($(elem).css("line-height"), 10);
+  };
   let i = 0;
   while (numStr($(element)) > inputValue) {
     i++;
-    $(element).css('font-size', `${fontSize - i}px`);
+    $(element).css("font-size", `${fontSize - i}px`);
   }
 }
