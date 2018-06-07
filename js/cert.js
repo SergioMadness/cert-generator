@@ -107,7 +107,8 @@ const elements = [{
 // GETTING DATA
 $.getJSON("json/data.json")
   .done(function (json) {
-    userData = defaultData = json;
+    userData = json;
+    defaultData = json;
     renderWorkspace(defaultData);
   })
   .fail(function (jqxhr, textStatus, error) {
