@@ -223,15 +223,6 @@ $(document).ready(function () {
       elem.workspace[0],
       userData[elem.data]
     );
-    // }
-    // DRAG AND RESIZE
-    setDragResize(
-      $(elem.workspace[0]),
-      $(elem.control[0]).find(".control-top"),
-      $(elem.control[0]).find(".control-left"),
-      $(elem.control[0]).find(".control-width"),
-      userData[elem.data]
-    );
   });
   $.each($(".cert-controls .card-header a"), function (key, elem) {
     elem.addEventListener("click", function () {
@@ -262,16 +253,6 @@ $(document).ready(function () {
     userData = jQuery.extend(true, {}, resetData);
     defaultData = jQuery.extend(true, {}, resetData);
     renderWorkspace(resetData);
-    $.each(elements, function (key, elem) {
-      // DRAG AND RESIZE
-      setDragResize(
-        $(elem.workspace[0]),
-        $(elem.control[0]).find(".control-top"),
-        $(elem.control[0]).find(".control-left"),
-        $(elem.control[0]).find(".control-width"),
-        userData[elem.data]
-      );
-    });
   });
 });
 /*
@@ -325,6 +306,17 @@ function renderWorkspace(data) {
       if (key !== "background") {
         setElement(elements[i].workspace, data[key]);
         setControl(elements[i].control, data[key]);
+        // console.log(elements[i].workspace[0]);
+        // console.log(  $(elements[i].control[0]).find(".control-top"),  );
+
+        // set drag and resize
+        setDragResize(
+          $(elements[i].workspace[0]),
+          $(elements[i].control[0]).find(".control-top"),
+          $(elements[i].control[0]).find(".control-left"),
+          $(elements[i].control[0]).find(".control-width"),
+          userData[elements[i].data]
+        );
         i++;
       } else {
         $(".cert-wokrspace__content").css(
