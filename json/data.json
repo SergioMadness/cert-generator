@@ -7,8 +7,8 @@
         "fontSize": "20",
         "lineHeight": "1.25",
         "color": "#ff0000",
-        "fontStyle": "Жирный",
-        "textAlign": "По левому краю",
+        "fontStyle": "bold",
+        "textAlign": "left",
         "value": "Иванов Иван Иванович",
         "maxStr": "2"
     },
@@ -20,8 +20,8 @@
         "fontSize": "20",
         "lineHeight": "1.25",
         "color": "#0000ff",
-        "fontStyle": "Жирный",
-        "textAlign": "По левому краю",
+        "fontStyle": "bold",
+        "textAlign": "left",
         "value": "000-0000-000-01",
         "maxStr": "1"
     },
@@ -33,8 +33,8 @@
         "fontSize": "30",
         "lineHeight": "1.25",
         "color": "#00ff00",
-        "fontStyle": "По умолчанию",
-        "textAlign": "По левому краю",
+        "fontStyle": "normal",
+        "textAlign": "left",
         "value": "Технология блокчейн в сельском хозяйстве",
         "maxStr": "2"
     },
@@ -46,8 +46,8 @@
         "fontSize": "20",
         "lineHeight": "1.25",
         "color": "#ff0000",
-        "fontStyle": "По умолчанию",
-        "textAlign": "По левому краю",
+        "fontStyle": "normal",
+        "textAlign": "left",
         "value": "Дата окончания: 30.02.2007",
         "maxStr": "1"
     },
@@ -59,8 +59,8 @@
         "fontSize": "20",
         "lineHeight": "1.25",
         "color": "#0000ff",
-        "fontStyle": "По умолчанию",
-        "textAlign": "По левому краю",
+        "fontStyle": "normal",
+        "textAlign": "left",
         "value": "Продолжительность: 2 часа",
         "maxStr": "1"
     },
@@ -68,7 +68,7 @@
         "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACAhITMkM1EwMFFCLy8vQiccHBwcJyIXFxcXFyIRDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/2wBDASIzMzQmNCIYGCIUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wgARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABrDH/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAEFAn//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/AX//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/AX//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAY/An//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAE/IX//2gAMAwEAAgADAAAAEAP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/EH//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/EH//xAAUEAEAAAAAAAAAAAAAAAAAAAAA/9oACAEBAAE/EH//2Q==",
         "positionTop": "0",
         "positionLeft": "0",
-        "size": "По ширине"
+        "size": "width"
     },
     "orientation": "landscape"
 }
